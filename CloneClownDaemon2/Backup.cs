@@ -23,12 +23,14 @@ namespace CloneClownDaemon2
             diffToBeUsed = new List<SnapShotRow>();
             usedPackageName = mdman.GetCurrentPackageName();
             int backupCount = mdman.GetBackupCount();
+            string backupDate = DateTime.Now.ToString("G").Replace('/', '-').Replace(':', '_');
             for (int i = 0; i < config.dests.Count; i++)
             {
                 for (int j = 0; j < config.sources.Count; j++)
                 {
-                    currentDest = Path.Combine(config.dests[i], config.name, usedPackageName, $"{config.type}_{backupCount}", config.sources[j].Split('/').Last()).ToString();
+                    currentDest = Path.Combine(config.dests[i], config.name, usedPackageName, $"{config.type}_{backupCount} {backupDate}", config.sources[j].Split('/').Last()).ToString();
                     filman.MkDir(currentDest);
+                    mdman.DeleteOldPackage(Path.Combine(config.dests[i], config.name));
                     newSnapshot = filman.CreateSnapshot(config.sources[j], j);
                     mdman.SetSnapshot(newSnapshot, j);
                     diffToBeUsed = newSnapshot;

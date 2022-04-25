@@ -157,6 +157,13 @@ namespace CloneClownDaemon2
             return GetPackageNames().Last();
 
         }
+        public void DeleteOldPackage()
+        {
+            if (GetPackageCount() >= config.rollbackMax)
+            {
+                
+            }
+        }
         public void SetBackupCount(int value)
         {
             string[] folderCounts = GetFCRawText().Split(';');
