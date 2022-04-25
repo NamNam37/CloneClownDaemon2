@@ -28,7 +28,7 @@ namespace CloneClownDaemon2
             foldersMax = 3;
             rollbackMax = 2;
             ZIP = false;
-            type = Type.Differencial;
+            type = Type.Full;
             string source = @"C:/Users/david/Music/source";
             string source2 = @"C:/Users/david/Music/source2";
             string dest = @"C:/Users/david/Music/dest";

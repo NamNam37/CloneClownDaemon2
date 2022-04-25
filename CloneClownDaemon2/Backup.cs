@@ -12,20 +12,23 @@ namespace CloneClownDaemon2
         private List<SnapShotRow> used { get; set; }
         private List<SnapShotRow> newSnapshot { get; set; }
         private List<SnapShotRow> diffToBeUsed { get; set; }
+        private string currentDest { get; set; }
+        private string usedPackageName { get; set; }
         public void Use(Configuration config)
         {
             FileManager filman = new FileManager(config);
             MetadataManager mdman = new MetadataManager(config);
 
-            int backupCount = mdman.GetBackupCount();
             int rollback = mdman.GetPackageCount();
             diffToBeUsed = new List<SnapShotRow>();
+            usedPackageName = mdman.GetCurrentPackageName();
+            int backupCount = mdman.GetBackupCount();
             for (int i = 0; i < config.dests.Count; i++)
             {
-                filman.MkDir(Path.Combine(config.dests[i], config.name));
-                filman.MkDir(Path.Combine(config.dests[i], config.name, $"{config.type}_{backupCount}"));
                 for (int j = 0; j < config.sources.Count; j++)
                 {
+                    currentDest = Path.Combine(config.dests[i], config.name, usedPackageName, $"{config.type}_{backupCount}", config.sources[j].Split('/').Last()).ToString();
+                    filman.MkDir(currentDest);
                     newSnapshot = filman.CreateSnapshot(config.sources[j], j);
                     mdman.SetSnapshot(newSnapshot, j);
                     diffToBeUsed = newSnapshot;
@@ -50,18 +53,28 @@ namespace CloneClownDaemon2
                             if (!found)
                             {
                                 diffToBeUsed.Add(newSnapshot[d]);
-                                
                             }
                         }
                     }
-                    Console.WriteLine("dest: " + config.dests[i]);
-                    Console.WriteLine("source: " + config.sources[j]);
                     foreach (var item in diffToBeUsed)
                     {
-                        Console.WriteLine(Path.Combine(config.dests[i], config.name, $"{config.type}_{backupCount}", config.sources[j].Split('/').Last(), item.path));
+                        if (!item.isFile)
+                        {
+                            filman.MkDir(currentDest, item.path);
+                        }
+
                     }
-                    
-                    
+                    foreach (var item in diffToBeUsed)
+                    {
+                        if (item.isFile)
+                        {
+                            filman.MkDir(currentDest, item.path.Substring(0, item.path.Length - item.path.Split(Path.DirectorySeparatorChar).Last().Length));
+                            
+                            filman.CopyFile(Path.Combine(config.sources[j], item.path),
+                                Path.Combine(currentDest, item.path));
+                        }
+                    }
+
                 }
             }
             mdman.SetBackupCount(mdman.GetBackupCount() + 1);

@@ -12,8 +12,8 @@ namespace CloneClownDaemon2
         {
             Configuration config = new Configuration();
             config.SetDemoConfig();
-            new MetadataManager(config).InitMetadata();
-
+            new MetadataManager(config).InitMetadata();            
+            
             Backup backup = new Backup();
             while (true)
             {

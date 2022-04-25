@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text;
 
 namespace CloneClownDaemon2
 {
@@ -39,11 +41,6 @@ namespace CloneClownDaemon2
             {
                 filman.MkDir(metadataPath, configName);
                 filman.MkFile(metadataPathPN);
-
-                using (StreamWriter writer = new StreamWriter(metadataPathPN))
-                {
-                    writer.WriteLine($"0;0");
-                }
             }
             if (!Directory.Exists(metadataPathSS))
             {
@@ -121,6 +118,45 @@ namespace CloneClownDaemon2
             }
             return output;
         }
+        public List<string> GetPackageNames()
+        {
+            string line;
+            using (StreamReader reader = new StreamReader(metadataPathPN))
+            {
+                line = reader.ReadLine();
+                if (line == null)
+                    return new List<string>();
+                if (line.Contains(';'))
+                {
+                    return line.Split(';').ToList();
+                }
+                return new List<string>() { line };
+            }
+            
+        }
+        public string GetCurrentPackageName()
+        {
+            List<string> a = GetPackageNames();
+            a.Add(DateTime.Now.ToString("G").Replace('/', '-').Replace(':', '_'));
+            if (GetPackageNames().Count == 0)
+            {
+                SetPackageNames(a);
+                Debug.WriteLine("first");
+                return a.Last().ToString();
+            }
+
+            if (GetBackupCount() >= config.foldersMax)
+            {
+                SetBackupCount(0);
+                SetPackageCount(GetPackageCount()+1);
+                SetPackageNames(a);
+                Debug.WriteLine("max");
+                return a.Last().ToString();
+            }
+            Debug.WriteLine("default");
+            return GetPackageNames().Last();
+
+        }
         public void SetBackupCount(int value)
         {
             string[] folderCounts = GetFCRawText().Split(';');
@@ -137,5 +173,24 @@ namespace CloneClownDaemon2
                 writer.WriteLine($"{folderCounts[0]};{value}");
             }
         }
+        public void SetPackageNames(List<string> packageNames)
+        {
+            StringBuilder packageNamesBuilder = new StringBuilder();
+            for (int i = 0; i < packageNames.Count; i++)
+            {
+                packageNamesBuilder.Append(packageNames[i]);
+                packageNamesBuilder.Append(';');
+            }
+            if (packageNames.Count > 0)
+                packageNamesBuilder.Remove(packageNamesBuilder.Length - 1, 1);
+
+            
+            string packageNamesToSave = packageNamesBuilder.ToString();
+            using (StreamWriter writer = new StreamWriter(metadataPathPN))
+            {
+                writer.WriteLine(packageNamesToSave);
+            }
+        }
+
     }
 }
