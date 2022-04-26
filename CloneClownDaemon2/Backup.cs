@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,53 +79,14 @@ namespace CloneClownDaemon2
                     }
 
                 }
+                if (config.ZIP)
+                {
+                    string zipPath = Path.Combine(config.dests[i], config.name, usedPackageName, $"{config.type}_{backupCount} {backupDate}");
+                    ZipFile.CreateFromDirectory(zipPath, zipPath + ".zip");
+                    filman.Delete(zipPath);
+                }
             }
             mdman.SetBackupCount(mdman.GetBackupCount() + 1);
-
-
-            /*
-            
-            List<SnapShotRow> used = mdman.GetSnapshot(folderCounts-1, destID);
-            List<SnapShotRow> newSnapshot = filman.CreateSnapshot(config.paths[destID].source);
-            List<SnapShotRow> diffToBeUsed = new List<SnapShotRow>();
-            mdman.SetSnapshot(newSnapshot, destID);
-
-            for (int d = 0; d < newSnapshot.Count; d++)
-            {
-                bool found = false;
-                for (int f = 0; f < used.Count; f++)
-                {
-                    if (used[f].path == newSnapshot[d].path && used[f].modifyTime.Subtract(newSnapshot[d].modifyTime).TotalSeconds > -2)
-                    {
-                        found = true;
-                    }
-                }
-                if (!found)
-                {
-                    diffToBeUsed.Add(newSnapshot[d]);
-                }
-            }
-            string backupFolder = $"IncrBackup_{folderCounts}";
-            string configFolderName = $"_{config.name}";
-
-                filman.MkDir(Path.Combine(paths.dest, backupFolder + configFolderName));
-                foreach (var snapShotRow in diffToBeUsed)
-                {
-                    if (!snapShotRow.isFile)
-                    {
-                        filman.MkDir(Path.Combine(paths.dest, backupFolder + configFolderName, snapShotRow.path.Remove(0, paths.source.Length + 1)).Replace('\\', '/'));
-                    }
-
-                }
-                foreach (var snapShotRow in diffToBeUsed)
-                {
-                    if (snapShotRow.isFile)
-                    {
-                        filman.CopyFile(Path.Combine(paths.source, snapShotRow.path.Remove(0, paths.source.Length + 1)).Replace('\\', '/'),
-                            Path.Combine(paths.dest, backupFolder + configFolderName, snapShotRow.path.Remove(0, paths.source.Length + 1)).Replace('\\', '/'));
-                    }
-                }
-        */
         }
     }
 }

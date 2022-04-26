@@ -141,7 +141,6 @@ namespace CloneClownDaemon2
             if (GetPackageNames().Count == 0)
             {
                 SetPackageNames(a);
-                Debug.WriteLine("first");
                 return a.Last().ToString();
             }
 
@@ -150,18 +149,21 @@ namespace CloneClownDaemon2
                 SetBackupCount(0);
                 SetPackageCount(GetPackageCount()+1);
                 SetPackageNames(a);
-                Debug.WriteLine("max");
                 return a.Last().ToString();
             }
-            Debug.WriteLine("default");
             return GetPackageNames().Last();
 
         }
-        public void DeleteOldPackage()
+        public void DeleteOldPackage(string packagesRoute)
         {
             if (GetPackageCount() >= config.rollbackMax)
             {
-                
+                string firstPackage = GetPackageNames().First();
+                new FileManager(config).Delete(Path.Combine(packagesRoute, firstPackage));
+                SetPackageCount(GetPackageCount()-1);
+                List<string> packages = GetPackageNames();
+                packages.RemoveAt(0);
+                SetPackageNames(packages);
             }
         }
         public void SetBackupCount(int value)
