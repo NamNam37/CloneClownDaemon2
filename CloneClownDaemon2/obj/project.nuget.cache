@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5Wjiss8lPHrYqCj0KJjmFm89L43qTsQwJhxR1EDn6B/fgl3AYBRoOFK0RPx7DFdOvLNkhIkWjojAUD5vkz5TFA==",
+  "dgSpecHash": "IRWyA+gxhknzTp4qEppLmdN2KtaVXi1DCdt1vbHQpSRcew05o5TEmEX+F40tf3q+tiXlvBW1dLf19rWoq4e3Kw==",
   "success": true,
   "projectFilePath": "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\pychadavid\\.nuget\\packages\\ncrontab\\3.3.1\\ncrontab.3.3.1.nupkg.sha512",
+    "C:\\Users\\pychadavid\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }

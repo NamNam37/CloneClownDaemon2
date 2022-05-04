@@ -58,7 +58,13 @@ E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDae
 E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.AssemblyInfo.cs
 E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.csproj.CoreCompileInputs.cache
 E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.dll
-E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\refint\CloneClownDaemon2.dll
 E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.pdb
 E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.genruntimeconfig.cache
 E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\ref\CloneClownDaemon2.dll
+E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\NCrontab.dll
+E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.csproj.CopyComplete
+F:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\NCrontab.dll
+F:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\Newtonsoft.Json.dll
+F:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.csproj.CopyComplete
+E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\Newtonsoft.Json.dll
+E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\ref\CloneClownDaemon2.dll

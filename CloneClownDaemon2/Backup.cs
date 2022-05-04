@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloneClownAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -15,12 +16,11 @@ namespace CloneClownDaemon2
         private List<SnapShotRow> diffToBeUsed { get; set; }
         private string currentDest { get; set; }
         private string usedPackageName { get; set; }
-        public void Use(Configuration config)
+        public void Use(Configs config)
         {
             FileManager filman = new FileManager(config);
             MetadataManager mdman = new MetadataManager(config);
 
-            int rollback = mdman.GetPackageCount();
             diffToBeUsed = new List<SnapShotRow>();
             usedPackageName = mdman.GetCurrentPackageName();
             int backupCount = mdman.GetBackupCount();
@@ -29,17 +29,23 @@ namespace CloneClownDaemon2
             {
                 for (int j = 0; j < config.sources.Count; j++)
                 {
-                    currentDest = Path.Combine(config.dests[i], config.name, usedPackageName, $"{config.type}_{backupCount} {backupDate}", config.sources[j].Split('/').Last()).ToString();
+                    currentDest = Path.Combine(config.dests[i].path, config.configName, usedPackageName, $"{config.type}_{backupCount} {backupDate}",
+                        config.sources[j].path.Split(Path.DirectorySeparatorChar).Last().Split(Path.AltDirectorySeparatorChar).Last()).ToString();
+                    Console.WriteLine(config.dests[i].path);
+                    Console.WriteLine(config.configName);
+                    Console.WriteLine(usedPackageName);
+                    Console.WriteLine($"{config.type}_{backupCount} {backupDate}");
+                    Console.WriteLine(config.sources[j].path.Split(Path.DirectorySeparatorChar).Last());
                     filman.MkDir(currentDest);
-                    mdman.DeleteOldPackage(Path.Combine(config.dests[i], config.name));
-                    newSnapshot = filman.CreateSnapshot(config.sources[j], j);
+                    mdman.DeleteOldPackage(Path.Combine(config.dests[i].path, config.configName));
+                    newSnapshot = filman.CreateSnapshot(config.sources[j].path, j);
                     mdman.SetSnapshot(newSnapshot, j);
                     diffToBeUsed = newSnapshot;
-                    if (backupCount > 0 && config.type != Configuration.Type.Full)
+                    if (backupCount > 0 && config.type != Configs.Type.full)
                     {
-                        if (config.type == Configuration.Type.Differencial)
+                        if (config.type == Configs.Type.differencial)
                             used = mdman.GetSnapshot(0, j);
-                        if (config.type == Configuration.Type.Incremental)
+                        if (config.type == Configs.Type.incremental)
                             used = mdman.GetSnapshot(backupCount - 1, j);
 
                         diffToBeUsed = new List<SnapShotRow>();
@@ -72,16 +78,16 @@ namespace CloneClownDaemon2
                         if (item.isFile)
                         {
                             filman.MkDir(currentDest, item.path.Substring(0, item.path.Length - item.path.Split(Path.DirectorySeparatorChar).Last().Length));
-                            
-                            filman.CopyFile(Path.Combine(config.sources[j], item.path),
+
+                            filman.CopyFile(Path.Combine(config.sources[j].path, item.path),
                                 Path.Combine(currentDest, item.path));
                         }
                     }
 
                 }
-                if (config.ZIP)
+                if (config.isZIP)
                 {
-                    string zipPath = Path.Combine(config.dests[i], config.name, usedPackageName, $"{config.type}_{backupCount} {backupDate}");
+                    string zipPath = Path.Combine(config.dests[i].path, config.configName, usedPackageName, $"{config.type}_{backupCount} {backupDate}");
                     ZipFile.CreateFromDirectory(zipPath, zipPath + ".zip");
                     filman.Delete(zipPath);
                 }

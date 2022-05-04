@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloneClownAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -14,10 +15,10 @@ namespace CloneClownDaemon2
         private string metadataPathSS { get; set; }
         private string metadataPathFC { get; set; }
         private string metadataPathPN { get; set; }
-        private Configuration config { get; set; }
-        public MetadataManager(Configuration config)
+        private Configs config { get; set; }
+        public MetadataManager(Configs config)
         {
-            this.configName = config.name;
+            this.configName = config.configName;
             this.config = config;
             this.metadataPath = $"../../../";
             this.metadataPathFC = metadataPath + $"{configName}/folderCount.txt";
@@ -144,7 +145,7 @@ namespace CloneClownDaemon2
                 return a.Last().ToString();
             }
 
-            if (GetBackupCount() >= config.foldersMax)
+            if (GetBackupCount() >= config.backupCount)
             {
                 SetBackupCount(0);
                 SetPackageCount(GetPackageCount()+1);
@@ -156,7 +157,7 @@ namespace CloneClownDaemon2
         }
         public void DeleteOldPackage(string packagesRoute)
         {
-            if (GetPackageCount() >= config.rollbackMax)
+            if (GetPackageCount() >= config.backupCount)
             {
                 string firstPackage = GetPackageNames().First();
                 new FileManager(config).Delete(Path.Combine(packagesRoute, firstPackage));

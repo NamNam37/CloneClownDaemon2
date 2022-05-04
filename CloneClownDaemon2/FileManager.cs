@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloneClownAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -12,8 +13,8 @@ namespace CloneClownDaemon2
     {
         
         private List<SnapShotRow> ssRows { get; set; }
-        private Configuration config { get; set; }
-        public FileManager(Configuration config)
+        private Configs config { get; set; }
+        public FileManager(Configs config)
         {
             this.config = config;
         }
@@ -70,11 +71,11 @@ namespace CloneClownDaemon2
         }
         private void CreateSubSnapshot(DirectoryInfo path, int backupID)
         {
-            ssRows.Add(new SnapShotRow(path.FullName.Remove(0, config.sources[backupID].Length), default, false));
+            ssRows.Add(new SnapShotRow(path.FullName.Remove(0, config.sources[backupID].path.Length), default, false));
 
             foreach (FileInfo file in path.GetFiles())
             {
-                ssRows.Add(new SnapShotRow(Path.Combine(path.FullName.Remove(0, config.sources[backupID].Length), file.Name), file.LastWriteTime, true));
+                ssRows.Add(new SnapShotRow(Path.Combine(path.FullName.Remove(0, config.sources[backupID].path.Length), file.Name), file.LastWriteTime, true));
             }
             foreach (DirectoryInfo sourceSubDirs in path.GetDirectories())
             {
