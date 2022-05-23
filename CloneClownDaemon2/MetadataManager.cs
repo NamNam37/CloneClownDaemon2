@@ -157,7 +157,7 @@ namespace CloneClownDaemon2
         }
         public void DeleteOldPackage(string packagesRoute)
         {
-            if (GetPackageCount() >= config.backupCount)
+            if (GetPackageCount() >= config.backupCount + 1)
             {
                 string firstPackage = GetPackageNames().First();
                 new FileManager(config).Delete(Path.Combine(packagesRoute, firstPackage));

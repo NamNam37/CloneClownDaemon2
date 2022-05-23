@@ -1,24 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj": {}
+    "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj": {}
   },
   "projects": {
-    "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj": {
+    "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
+        "projectUniqueName": "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
         "projectName": "CloneClownDaemon2",
-        "projectPath": "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
-        "packagesPath": "C:\\Users\\pychadavid\\.nuget\\packages\\",
-        "outputPath": "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\obj\\",
+        "projectPath": "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
+        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\pychadavid\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
@@ -43,6 +46,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "FluentFTP": {
+              "target": "Package",
+              "version": "[37.0.2, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
@@ -67,7 +74,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
         }
       }
     }

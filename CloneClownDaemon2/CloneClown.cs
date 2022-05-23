@@ -10,46 +10,58 @@ namespace CloneClownDaemon2
 {
     public class CloneClown
     {
-        public async Task Start()
+        DateTime datetimeNextUpdateUser { get; set; }
+        List<DateTime> dt { get; set; }
+        List<Configs> configs { get; set; }
+        User thisUser { get; set; }
+        string cronToUpdateUser = "*/1 * * * *";
+        public async Task Init()
         {
-            User thisUser = await new UsersService().FindThisUser();
+            thisUser = await new UsersService().FindThisUser();
             if (thisUser == null)
             {
                 await new UsersService().CreateThisUser();
                 thisUser = await new UsersService().FindThisUser();
             }
-            List<Configs> configs = thisUser.configs;
-            Backup backup = new Backup();
-            List<DateTime> dt = new List<DateTime>();
-            string cronToUpdateUser = "*/5 * * * *";
-            DateTime datetimeNextUpdateUser = new Scheduler().GetNextDateTime(cronToUpdateUser);
+            configs = thisUser.configs;
+            dt = new List<DateTime>();
             foreach (Configs config in configs)
             {
                 new MetadataManager(config).InitMetadata();
                 dt.Add(new Scheduler().GetNextDateTime(config.schedule));
             }
+            
+            datetimeNextUpdateUser = new Scheduler().GetNextDateTime(cronToUpdateUser);
+        }
+        public async Task Start()
+        {
+            
+
             while (true)
             {
-                for (int i = 0; i < configs.Count; i++)
+                if (thisUser.verified)
                 {
-                    
-                    if (DateTime.Compare(dt[i], DateTime.Now) < 0)
+                    for (int i = 0; i < configs.Count; i++)
                     {
-                        backup.Use(configs[i]);
-                        dt[i] = new Scheduler().GetNextDateTime(configs[i].schedule);
-                        thisUser.last_backup = DateTime.Now;
-                        thisUser.configs[i].last_used = DateTime.Now;
-                        //await new UsersService().Update(thisUser);
-                    }
-                    if (DateTime.Compare(datetimeNextUpdateUser, DateTime.Now) < 0)
-                    {
-                        thisUser = await new UsersService().FindThisUser();
-                        configs = thisUser.configs;
 
-                        datetimeNextUpdateUser = new Scheduler().GetNextDateTime(cronToUpdateUser);
+                        if (DateTime.Compare(dt[i], DateTime.Now) < 0)
+                        {
+                            Backup backup = new Backup(configs[i]);
+                            backup.Use();
+                            dt[i] = new Scheduler().GetNextDateTime(configs[i].schedule);
+                            thisUser.last_backup = DateTime.Now;
+                            thisUser.configs[i].last_used = DateTime.Now;
+                        }
+
                     }
                 }
-                
+                if (DateTime.Compare(datetimeNextUpdateUser, DateTime.Now) < 0)
+                {
+                    thisUser = await new UsersService().FindThisUser();
+                    configs = thisUser.configs;
+
+                    datetimeNextUpdateUser = new Scheduler().GetNextDateTime(cronToUpdateUser);
+                }
             }
             
             

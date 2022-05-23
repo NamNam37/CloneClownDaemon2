@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "FluentFTP/37.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/FluentFTP.dll": {}
+        },
+        "runtime": {
+          "lib/net5.0/FluentFTP.dll": {}
+        }
+      },
       "NCrontab/3.3.1": {
         "type": "package",
         "compile": {
@@ -23,6 +32,37 @@
     }
   },
   "libraries": {
+    "FluentFTP/37.0.2": {
+      "sha512": "UW2svrugWPVK7g6heJjGbsWIBPhJHOtMmp1g4NijSTd3z8f+qxg8kv8cIzAWfxusjCRThIHpJts2PHjbg0SOKQ==",
+      "type": "package",
+      "path": "fluentftp/37.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.TXT",
+        "fluentftp.37.0.2.nupkg.sha512",
+        "fluentftp.nuspec",
+        "lib/net20/FluentFTP.dll",
+        "lib/net20/FluentFTP.xml",
+        "lib/net35/FluentFTP.dll",
+        "lib/net35/FluentFTP.xml",
+        "lib/net40/FluentFTP.dll",
+        "lib/net40/FluentFTP.xml",
+        "lib/net45/FluentFTP.dll",
+        "lib/net45/FluentFTP.xml",
+        "lib/net5.0/FluentFTP.dll",
+        "lib/net5.0/FluentFTP.xml",
+        "lib/netstandard1.4/FluentFTP.dll",
+        "lib/netstandard1.4/FluentFTP.xml",
+        "lib/netstandard1.6/FluentFTP.dll",
+        "lib/netstandard1.6/FluentFTP.xml",
+        "lib/netstandard2.0/FluentFTP.dll",
+        "lib/netstandard2.0/FluentFTP.xml",
+        "lib/netstandard2.1/FluentFTP.dll",
+        "lib/netstandard2.1/FluentFTP.xml",
+        "logo-nuget.png"
+      ]
+    },
     "NCrontab/3.3.1": {
       "sha512": "G3tzcIIgsiyZyVbHNPyn5+adaM9UjeVNgjrRsvXU7wo2sMhpvpQrir29dcjIND53H/fuTdgg9nI3SfFFg7barA==",
       "type": "package",
@@ -71,29 +111,34 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "FluentFTP >= 37.0.2",
       "Newtonsoft.Json >= 13.0.1",
       "ncrontab >= 3.3.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pychadavid\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\david\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
+      "projectUniqueName": "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
       "projectName": "CloneClownDaemon2",
-      "projectPath": "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
-      "packagesPath": "C:\\Users\\pychadavid\\.nuget\\packages\\",
-      "outputPath": "E:\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\obj\\",
+      "projectPath": "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
+      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\pychadavid\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -118,6 +163,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "FluentFTP": {
+            "target": "Package",
+            "version": "[37.0.2, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
@@ -142,7 +191,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

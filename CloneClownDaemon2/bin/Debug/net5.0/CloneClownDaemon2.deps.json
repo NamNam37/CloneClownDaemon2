@@ -8,11 +8,20 @@
     ".NETCoreApp,Version=v5.0": {
       "CloneClownDaemon2/1.0.0": {
         "dependencies": {
+          "FluentFTP": "37.0.2",
           "Newtonsoft.Json": "13.0.1",
           "NCrontab": "3.3.1"
         },
         "runtime": {
           "CloneClownDaemon2.dll": {}
+        }
+      },
+      "FluentFTP/37.0.2": {
+        "runtime": {
+          "lib/net5.0/FluentFTP.dll": {
+            "assemblyVersion": "37.0.2.0",
+            "fileVersion": "37.0.2.0"
+          }
         }
       },
       "NCrontab/3.3.1": {
@@ -38,6 +47,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "FluentFTP/37.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UW2svrugWPVK7g6heJjGbsWIBPhJHOtMmp1g4NijSTd3z8f+qxg8kv8cIzAWfxusjCRThIHpJts2PHjbg0SOKQ==",
+      "path": "fluentftp/37.0.2",
+      "hashPath": "fluentftp.37.0.2.nupkg.sha512"
     },
     "NCrontab/3.3.1": {
       "type": "package",

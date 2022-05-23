@@ -10,6 +10,8 @@ namespace CloneClownAPI.Models
         public string IP { get; set; }
         public bool online { get; set; }
         public DateTime last_backup { get; set; }
+        public bool verified { get; set; }
+        public int minutesOnline { get; set; }
 
         public  List<Configs> configs { get; set; }
         public List<Logs> logs { get; set; }

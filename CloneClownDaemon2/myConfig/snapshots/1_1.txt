@@ -1,2 +1,0 @@
-test1.txt;3/10/2022 4:25:44 PM;True
-test2.txt;4/8/2022 4:34:03 PM;True
