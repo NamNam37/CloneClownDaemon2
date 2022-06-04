@@ -14,7 +14,7 @@ namespace CloneClownDaemon2
         List<DateTime> dt { get; set; }
         List<Configs> configs { get; set; }
         User thisUser { get; set; }
-        string cronToUpdateUser = "*/1 * * * *";
+        string cronToUpdateUser = "* * * * *";
         public async Task Init()
         {
             thisUser = await new UsersService().FindThisUser();

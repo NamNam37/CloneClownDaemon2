@@ -88,3 +88,4 @@ C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.pdb
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.genruntimeconfig.cache
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\FluentFTP.dll
+E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\FluentFTP.dll

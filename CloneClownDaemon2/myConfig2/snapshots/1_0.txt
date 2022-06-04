@@ -1,8 +1,0 @@
-test1.txt;5/23/2022 12:34:09 PM;True
-test2.txt;3/10/2022 4:25:36 PM;True
-ahoj;1/1/0001 12:00:00 AM;False
-ahoj\test1.txt;3/10/2022 4:25:30 PM;True
-ahoj\test2.txt;3/10/2022 4:25:36 PM;True
-hello;1/1/0001 12:00:00 AM;False
-hello\test1.txt;3/10/2022 4:25:30 PM;True
-hello\test2.txt;3/10/2022 4:25:36 PM;True

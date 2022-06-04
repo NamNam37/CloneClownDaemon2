@@ -20,7 +20,7 @@ namespace CloneClownDaemon2
         {
             this.configName = config.configName;
             this.config = config;
-            this.metadataPath = $"../../../";
+            this.metadataPath = $"../../../configs/";
             this.metadataPathFC = metadataPath + $"{configName}/folderCount.txt";
             this.metadataPathPN = metadataPath + $"{configName}/PackageNames.txt";
             this.metadataPathSS = metadataPath + $"{configName}/snapshots/";

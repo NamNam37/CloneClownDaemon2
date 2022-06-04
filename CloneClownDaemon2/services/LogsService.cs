@@ -11,30 +11,30 @@ using System.Threading.Tasks;
 
 namespace CloneClownDaemon2
 {
-    public class ConfigsService
+    public class LogsService
     {
         private HttpClient client;
-        public ConfigsService()
+        public LogsService()
         {
             this.client = new HttpClient();
             this.client.BaseAddress = new Uri("http://localhost:35125");
         }
-        public async Task<List<Configs>> FindAll()
+        public async Task<List<Logs>> FindAll()
         {
-            string result = await this.client.GetStringAsync("/api/configs");
+            string result = await this.client.GetStringAsync("/api/logs");
 
-            List<Configs> data = JsonConvert.DeserializeObject<List<Configs>>(result);
+            List<Logs> data = JsonConvert.DeserializeObject<List<Logs>>(result);
 
             return data;
         }
-        public async Task Create(Configs config)
+        public async Task Create(Logs log)
         {
-            await this.client.PostAsJsonAsync("/api/configs", config);
+            await this.client.PostAsJsonAsync("/api/logs", log);
         }
 
-        public async Task Update(Configs config)
+        public async Task Update(Logs log)
         {
-            await this.client.PutAsJsonAsync($"/api/configs/{config.id}", config);
+            await this.client.PutAsJsonAsync($"/api/logs/{log.id}", log);
         }
 
     }
