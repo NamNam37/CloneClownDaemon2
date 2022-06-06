@@ -73,7 +73,6 @@ C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\CloneClownDaemon2.runtimeconfig.json
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\CloneClownDaemon2.runtimeconfig.dev.json
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\CloneClownDaemon2.dll
-C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\ref\CloneClownDaemon2.dll
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\CloneClownDaemon2.pdb
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\NCrontab.dll
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\Newtonsoft.Json.dll
@@ -89,3 +88,4 @@ C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\CloneClownDaemon2.genruntimeconfig.cache
 C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\FluentFTP.dll
 E:\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\bin\Debug\net5.0\FluentFTP.dll
+C:\Users\david\Desktop\CLONECLOWN\CloneClownDaemon2\CloneClownDaemon2\obj\Debug\net5.0\refint\CloneClownDaemon2.dll

@@ -24,6 +24,8 @@ namespace CloneClownDaemon2
                 thisUser = await new UsersService().FindThisUser();
             }
             configs = thisUser.configs;
+            if (configs.Count == 0)
+                await new Logger().FailedLog(thisUser, null, 1);
             dt = new List<DateTime>();
             foreach (Configs config in configs)
             {
@@ -59,6 +61,14 @@ namespace CloneClownDaemon2
                 {
                     thisUser = await new UsersService().FindThisUser();
                     configs = thisUser.configs;
+                    if (configs.Count == 0)
+                        await new Logger().FailedLog(thisUser, new Configs(), 1);
+                    dt = new List<DateTime>();
+                    foreach (Configs config in configs)
+                    {
+                        new MetadataManager(config).InitMetadata();
+                        dt.Add(new Scheduler().GetNextDateTime(config.schedule));
+                    }
 
                     datetimeNextUpdateUser = new Scheduler().GetNextDateTime(cronToUpdateUser);
                 }

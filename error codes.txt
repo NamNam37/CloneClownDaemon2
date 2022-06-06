@@ -1,0 +1,13 @@
+0 - succesful backup
+1 - user has no configs
+2 - config has no destinations
+3 - config has no sources
+4 - user is unverified
+5 - config has invalid destination
+6 - config has invalid source
+7 - config has invalid cron
+8 - config has invalid backup count(0, string)
+9 - config has invalid package count(0, string)
+10 - user is offline
+11 - server is offline
+12 - ftp is offline

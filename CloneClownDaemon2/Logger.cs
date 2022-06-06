@@ -15,7 +15,14 @@ namespace CloneClownDaemon2
         }
         public async Task FailedLog(User user, Configs config, int errorCode)
         {
-            await new LogsService().Create(new Logs(user.id, config.id, false, errorCode, DateTime.Now, false));
+            if (config == null)
+            {
+                await new LogsService().Create(new Logs(user.id, null, false, errorCode, DateTime.Now, false));
+            }
+            else
+            {
+                await new LogsService().Create(new Logs(user.id, config.id, false, errorCode, DateTime.Now, false));
+            }
         }
     }
 }
