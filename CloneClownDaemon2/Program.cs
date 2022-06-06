@@ -9,7 +9,7 @@ namespace CloneClownDaemon2
         static async Task Main(string[] args)
         {
             CloneClown cloneClown = new CloneClown();
-            await cloneClown.Init();
+            await cloneClown.LoadUser();
              await cloneClown.Start();
             
         }

@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "B00Q82iLZYTwDdtBqEgYSX6YhnJEA2U3yAnf2cNOXIWbn4mkum1FzgH0wXxUqVjlE695JoRcUDb3PNRdjNtr4w==",
+  "dgSpecHash": "3Uky5yLM/87qWDms7fS3DWgwBKN8p/Xq2ux8V/4kdl2iDA1dzYwURS6TTYHDSdPjXlrZg6VWGQwFuxyA8FgrCA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\david\\Desktop\\CLONECLOWN\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
+  "projectFilePath": "C:\\Users\\pychadavid\\Downloads\\CloneClown\\CloneClownDaemon2\\CloneClownDaemon2\\CloneClownDaemon2.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\david\\.nuget\\packages\\fluentftp\\37.0.2\\fluentftp.37.0.2.nupkg.sha512",
-    "C:\\Users\\david\\.nuget\\packages\\ncrontab\\3.3.1\\ncrontab.3.3.1.nupkg.sha512",
-    "C:\\Users\\david\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\pychadavid\\.nuget\\packages\\fluentftp\\37.0.2\\fluentftp.37.0.2.nupkg.sha512",
+    "C:\\Users\\pychadavid\\.nuget\\packages\\ncrontab\\3.3.1\\ncrontab.3.3.1.nupkg.sha512",
+    "C:\\Users\\pychadavid\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

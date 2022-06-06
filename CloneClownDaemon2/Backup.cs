@@ -19,8 +19,10 @@ namespace CloneClownDaemon2
         private Configs config { get; set; }
         int backupCount { get; set; }
         string backupDate { get; set; }
-        public Backup(Configs config)
+        User thisUser { get; set; }
+        public Backup(Configs config, User thisUser)
         {
+            this.thisUser = thisUser;
             this.config = config;
             MetadataManager mdman = new MetadataManager(config);
             diffToBeUsed = new List<SnapShotRow>();
@@ -28,8 +30,15 @@ namespace CloneClownDaemon2
             backupCount = mdman.GetBackupCount();
             backupDate = DateTime.Now.ToString("G").Replace('/', '-').Replace(':', '_');
         }
-        public void Use()
+        public async Task Use()
         {
+            if (config.dests.Count == 0)
+                await new Logger().FailedLog(thisUser, config, 3);
+
+            if (config.sources.Count == 0)
+                await new Logger().FailedLog(thisUser, config, 4);
+
+
             for (int i = 0; i < config.dests.Count; i++)
             {
                 for (int j = 0; j < config.sources.Count; j++)

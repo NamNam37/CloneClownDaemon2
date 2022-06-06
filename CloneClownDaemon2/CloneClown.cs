@@ -15,7 +15,7 @@ namespace CloneClownDaemon2
         List<Configs> configs { get; set; }
         User thisUser { get; set; }
         string cronToUpdateUser = "* * * * *";
-        public async Task Init()
+        public async Task LoadUser()
         {
             thisUser = await new UsersService().FindThisUser();
             if (thisUser == null)
@@ -48,8 +48,8 @@ namespace CloneClownDaemon2
 
                         if (DateTime.Compare(dt[i], DateTime.Now) < 0)
                         {
-                            Backup backup = new Backup(configs[i]);
-                            backup.Use();
+                            Backup backup = new Backup(configs[i], thisUser);
+                            await backup.Use();
                             dt[i] = new Scheduler().GetNextDateTime(configs[i].schedule);
                             thisUser.last_backup = DateTime.Now;
                             thisUser.configs[i].last_used = DateTime.Now;
@@ -59,18 +59,7 @@ namespace CloneClownDaemon2
                 }
                 if (DateTime.Compare(datetimeNextUpdateUser, DateTime.Now) < 0)
                 {
-                    thisUser = await new UsersService().FindThisUser();
-                    configs = thisUser.configs;
-                    if (configs.Count == 0)
-                        await new Logger().FailedLog(thisUser, new Configs(), 1);
-                    dt = new List<DateTime>();
-                    foreach (Configs config in configs)
-                    {
-                        new MetadataManager(config).InitMetadata();
-                        dt.Add(new Scheduler().GetNextDateTime(config.schedule));
-                    }
-
-                    datetimeNextUpdateUser = new Scheduler().GetNextDateTime(cronToUpdateUser);
+                    await LoadUser();
                 }
             }
             
